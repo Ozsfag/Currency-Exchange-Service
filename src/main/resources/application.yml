@@ -20,4 +20,6 @@ spring:
         show_sql: true
         hbm2ddl:
           auto: none
-
+currency:
+  api:
+    url: https://www.cbr.ru/scripts/XML_daily.asp

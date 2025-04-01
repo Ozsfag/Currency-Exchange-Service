@@ -18,27 +18,27 @@ public class CurrencyService {
   private final CurrencyRepository repository;
 
   public List<SimpleCurrencyDto> getAll() {
-    log.info("CurrencyService method getAll executed");
+    log.info("CurrencyService method getAll executed.");
     return mapper.convertToDtoList(repository.findAll());
   }
 
   public CurrencyDto getById(Long id) {
-    log.info("CurrencyService method getById executed");
+    log.info("CurrencyService method getById executed.");
     Currency currency =
         repository
             .findById(id)
-            .orElseThrow(() -> new RuntimeException("Currency not found with id: " + id));
+            .orElseThrow(() -> new RuntimeException("Currency not found with id: " + id + "."));
     return mapper.convertToDto(currency);
   }
 
   public Double convertValue(Long value, Long numCode) {
-    log.info("CurrencyService method convertValue executed");
+    log.info("CurrencyService method convertValue executed.");
     Currency currency = repository.findByIsoNumCode(numCode);
     return value * currency.getValue();
   }
 
   public CurrencyDto create(CurrencyDto dto) {
-    log.info("CurrencyService method create executed");
+    log.info("CurrencyService method create executed.");
     return mapper.convertToDto(repository.save(mapper.convertToEntity(dto)));
   }
 }
